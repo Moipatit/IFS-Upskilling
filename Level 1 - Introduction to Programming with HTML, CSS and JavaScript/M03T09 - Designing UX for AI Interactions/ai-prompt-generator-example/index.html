@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>AI Prompt Generator</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="container">
+    <h1>AI Prompt Generator</h1>
+
+    <p>
+      This example demonstrates loading states, retry functionality,
+      and user feedback for an AI-powered feature.
+    </p>
+
+    <label for="prompt">
+      Enter your prompt
+    </label>
+
+    <textarea id="prompt"
+              placeholder="Type a prompt for the AI system"></textarea>
+
+    <div class="button-group">
+      <button id="submit-btn">
+        Generate
+      </button>
+
+      <button id="retry-btn" hidden>
+        Retry
+      </button>
+    </div>
+
+    <p id="status"
+       aria-live="polite"></p>
+
+    <div id="result"></div>
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

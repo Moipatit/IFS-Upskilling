@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversational and Adaptive UI Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <header class="app-header">
+            <h1>AI Study Portal Dashboard</h1>
+            <div class="context-selector-wrapper">
+                <label for="skill-selector">Select Your Experience Level:</label>
+                <select id="skill-selector">
+                    <option value="beginner">Beginner View (Simplified Layout)</option>
+                    <option value="advanced">Advanced View (Detailed Layout)</option>
+                </select>
+            </div>
+        </header>
+
+        <main id="dashboard-view" class="simplified-layout">
+            
+            <section class="chat-wrapper">
+                <h2>Conversational Assistant Stream</h2>
+                
+                <div id="chat-log" aria-live="polite" aria-atomic="false">
+                    </div>
+
+                <div class="input-panel">
+                    <textarea id="prompt-input" placeholder="Type a message here (e.g., 'Tell me a study tip')..."></textarea>
+                    <button id="send-btn">Generate Response</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
