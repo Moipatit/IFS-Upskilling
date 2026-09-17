@@ -1,0 +1,32 @@
+1.
+REPEAT
+request the user to enter a positive number
+UNTIL user enters zero
+sort all of the numbers entered from smallest to biggest
+print the biggest number
+
+2.
+request the user to input their name
+store the user input in a variable called first_name
+print first_name and "Hello World"
+
+3. 
+WHILE number does not equal zero
+read in a list of numbers
+calculate the average of the numbers
+print the average of the numbers
+ENDWHILE
+
+4.
+read in a grocery list of items
+sort the items into alphabetical order
+print the sorted list
+
+5. 
+START
+read in the variables x and y
+create a variable called S and give it the value of X plus Y
+create a variable called A and give it the value of S divided by 2
+create a variable called P and give it the value of X times Y
+write S, A and P
+Stop
