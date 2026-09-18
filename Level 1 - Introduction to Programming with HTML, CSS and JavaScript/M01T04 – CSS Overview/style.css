@@ -1,0 +1,83 @@
+/* General styling of the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8f0;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header styling */
+header { 
+    background-color: #8b4513; 
+    color: white; 
+    text-align: center; 
+    padding: 30px; 
+}
+
+/* Main heading */ 
+h1 { color: #ffffff; 
+    font-size: 40px; 
+    margin-bottom: 10px; 
+}
+
+/* Subheadings */ 
+h2 { 
+    color: #8b4513; 
+    font-size: 30px; 
+    margin-top: 30px; 
+    margin-bottom: 15px; 
+} 
+
+h3 { 
+    color: #d2691e; 
+    font-size: 22px; 
+    margin-top: 20px; 
+    margin-bottom: 10px; 
+}
+
+/* Navigation */ 
+nav ul { 
+    list-style-type: none; 
+    padding: 0; 
+    margin: 20px 0 0; 
+} 
+
+nav li { 
+    display: inline; 
+    margin: 0 15px; 
+} 
+
+nav a { 
+    color: #ffffff; 
+    text-decoration: underline; 
+    font-weight: bold;
+} 
+
+nav a:hover { 
+    color: #ffd700;
+}
+
+/* Emphasis */ 
+strong { 
+    color: #8b4513; 
+} 
+
+em { 
+    color: #d2691e; 
+}
+
+/* Footer */ 
+footer { 
+    background-color: #8b4513; 
+    color: white; 
+    text-align: center; 
+    padding: 20px; 
+    margin-top: 30px; 
+} 
+
+footer p { 
+    color: white; 
+    margin: 0; 
+}
