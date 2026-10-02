@@ -5,9 +5,9 @@ async function runIntelligenceEngine() {
         // Example AI API endpoint structure
         const targetUrl = "https://jsonplaceholder.typicode.com/posts";
         // Simulated API key placeholder
-        const API_KEY = "YOUR_API_KEY_HERE";
+        const API_KEY = "Bearer hyper_dev_token_example_xyz";
         // Structured AI prompt
-        const generatedPrompt = "Generate three productivity app ideas for students.";
+        const generatedPrompt = "Generate three project ideas for beginner coding students";
         // Request configuration object
         const networkOptions = {
             method: "POST",
