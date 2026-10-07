@@ -16,6 +16,15 @@
 
     <div id="message" aria-live="polite"></div>
     <div id="result"></div>
+    <div id="active-orders">
+        <button onclick="displayActiveOrders()">Display Active Orders</button>
+    </div>
+
+    <div id="complete-orders">
+        <label for="orderNumber">Please enter an order number:</label>
+        <input id="orderNumber" placeholder="Order 1" required>
+        <button onclick="completeOrders()">Complete an order</button>
+    </div>
 
 
     <script src="main.js"></script>
