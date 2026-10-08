@@ -1,3 +1,132 @@
-.hidden{
+/* General Styling*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+body > * {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Main Form */
+#userInput {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #555;
+    box-shadow: 0 0 0 2px rgba(85, 85, 85, 0.15);
+}
+
+/* Buttons */
+button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #333;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+button:hover  {
+    background-color: #555;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+#retryButton {
+    background-color: #777;
+}
+
+#retryButton:hover {
+    background-color: #555;
+}
+
+/* Hide elements when required */
+.hidden {
     display: none;
+}
+
+/* Messages*/
+#message {
+    max-width: 800px;
+    margin: 15px auto;
+    padding: 12px 15px;
+    min-height: 48px;
+    border-radius: 6px;
+    font-weight: 500;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+/* Recommendation */
+#result {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-size: 18px;
+    font-weight: 500;
+    white-space: pre-line;
+}
+
+/* Order Section */
+#active-orders,
+#complete-orders {
+    background-color: white;
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+#active-orders button {
+    margin-bottom: 15px;
+}
+
+#active-orders p {
+    margin: 8px 0;
+}
+
+#active-orders hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
 }
