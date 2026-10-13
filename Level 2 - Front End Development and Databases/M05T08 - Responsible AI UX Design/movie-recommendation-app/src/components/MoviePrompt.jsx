@@ -71,8 +71,8 @@ function MoviePrompt(){
 
     return (
         <div>
-            <h1>AI Movie Recommendation app</h1>
-            <p> Click the button below to randomly select and display a movie</p>
+            <h1>Movie Recommendation Example</h1>
+            <p> Select a sample movie to explore how a recommendation interface might communicate its results responsibly.</p>
             <button onClick={getRandomMovie}>
                 {currentMovie ? "Pick Another Movie" : "Get Random Movie"}
             </button>
@@ -86,6 +86,7 @@ function MoviePrompt(){
             </div>
             <p><strong>Director:</strong> {currentMovie.director}</p>
             <p>{currentMovie.synopsis}</p>
+            <small>This was generated using AI and may contain inaccuracies</small>
           </div>
         ) : (
           <div>

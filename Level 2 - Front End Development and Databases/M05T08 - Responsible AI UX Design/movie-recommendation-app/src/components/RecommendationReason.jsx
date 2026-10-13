@@ -6,10 +6,15 @@ function RecommendationReason(){
     return (
         <div>
             <button onClick={() => setShowReason(!showReason)}>
-                Why am I seeing this?
+                {showReason ? "Hide Recommendation reason" : "Why am I seeing this?"}
             </button>
             {showReason && (
-                <p>Recommended because you have watched certain type of movies</p>
+                <div>
+                    <h3>Why was this movie recommended</h3>
+                    <p> This movie may have been recommended because its genre or themes match movies you have enjoyed in the past.</p>
+
+                    <p> Recommendations are suggestions, and they may not always match your interests.</p>
+                </div>
             )}
         </div>
     )
