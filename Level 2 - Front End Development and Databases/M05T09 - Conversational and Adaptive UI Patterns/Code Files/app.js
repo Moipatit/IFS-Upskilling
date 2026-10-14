@@ -40,7 +40,7 @@ function initializeChatInterface() {
             if (activeIndicator) activeIndicator.remove();
 
             // Append the final response content block smoothly to the user view
-            appendMessageNode("assistant", "This is a simulated response designed to test adaptive layout flows.");
+            appendMessageNode("assistant", "Remember to take short, regular breaks to maintain your focus and retention");
         }, 2000);
     }
 
