@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to AI and ML</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Intro to AI and Machine learning</h1>
+        <section>
+            <article>
+                <h2>Introduction to AI</h2>
+            </article>
+        </section>
+
+        <section>
+            <article>
+                <h2>What machine learning means</h2>
+            </article>
+        </section>
+
+        <section>
+            <article>
+                <h2>How AI is used in web applications</h2>
+            </article>
+        </section>
+
+        <section>
+            <article>
+                <h2>Responsible AI considerations</h2>
+            </article>
+        </section>
+
+        <section>
+                <h2>Learning path recommender</h2>
+                <form id="recommendation-form">
+                    <section>
+                        <label for="quiz-score">Quiz score out of 100:</label>
+                        <input type="number" id="quiz-score" name="quiz-score" required>
+                    </section>
+
+                    <section>
+                        <label for="confidence-level">Confidence Level:</label>
+                        <select name="confidence-level" id="confidence-level" required>
+                            <option value="low">Low</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="high">High</option>
+                        </select>
+                    </section>
+
+                    <section>
+                        <label for="learning-pace">Preferred learning pace:</label>
+                        <select name="learning-pace" id="learning-pace" required>
+                            <option value="slow">Slow</option>
+                            <option value="medium">Medium</option>
+                            <option value="fast">Fast</option>
+                        </select>
+                    </section>
+                    <button type="submit">Get recommendation</button>
+                </form>
+
+                <section id="result-display">
+
+                </section>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

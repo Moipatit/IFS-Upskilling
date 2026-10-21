@@ -12,6 +12,8 @@ function EventForm({ onSubmit, editingEvent, onCancelEdit }){
     };
 
     const [formData, setFormData] = useState(emptyForm);
+    const [isGenerating, setIsGenerating] = useState(false);
+    const [aiError, setAiError] = useState("")
 
     useEffect(() => {
         if (editingEvent){
@@ -41,6 +43,74 @@ function EventForm({ onSubmit, editingEvent, onCancelEdit }){
         setFormData(emptyForm);
 
     }
+
+async function handleGenerateDescription() {
+  if (!formData.name.trim()) {
+    setAiError("Please enter an event title first.");
+    return;
+  }
+
+  setIsGenerating(true);
+  setAiError("");
+
+  try {
+    const response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: "YOUR_MODEL_SLUG",
+          messages: [
+            {
+              role: "system",
+              content:
+                "Write a clear, engaging event description in 2-4 sentences. " +
+                "Use the supplied event details and do not invent missing facts."
+            },
+            {
+              role: "user",
+              content: `Create a description for this event:
+                Title: ${formData.name}
+                Date: ${formData.date || "Not specified"}
+                Time: ${formData.time || "Not specified"}
+                Location: ${formData.location || "Not specified"}`
+            }
+          ],
+          max_tokens: 180
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.error?.message || "Unable to generate a description."
+      );
+    }
+
+    const description = data.choices?.[0]?.message?.content;
+
+    if (!description) {
+      throw new Error("The AI returned an empty description.");
+    }
+
+    setFormData(prev => ({
+      ...prev,
+      description: description.trim()
+    }));
+  } catch (error) {
+    setAiError(error.message || "Something went wrong.");
+  } finally {
+    setIsGenerating(false);
+  }
+}
+
+
 
     return (
             <div>
@@ -85,6 +155,9 @@ function EventForm({ onSubmit, editingEvent, onCancelEdit }){
                         onChange={handleChange}
                         required
                     />
+
+                    <button type="button" onClick={handleGenerateDescription} disabled={isGenerating}>{isGenerating ? "Generating..." : "Generate description"}</button>
+                    {aiError && <p role="alert">{aiError}</p>}
 
                     <label htmlFor="name">Location</label>
                     <input
