@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useEvents } from "../context/EventContext";
 
-function EventForm({ onSubmit, editingEvent, onCancelEdit }){
+
+function EventForm({ eventToEdit = null }){
+    const { addEvent, updateEvent } = useEvents();
+    const navigate = useNavigate();
+
     const emptyForm = {
         name: "",
         data: "",
@@ -13,21 +17,23 @@ function EventForm({ onSubmit, editingEvent, onCancelEdit }){
 
     const [formData, setFormData] = useState(emptyForm);
     const [isGenerating, setIsGenerating] = useState(false);
-    const [aiError, setAiError] = useState("")
+    const [aiError, setAiError] = useState("");
+
+    const isEditing = eventToEdit !== null;
 
     useEffect(() => {
-        if (editingEvent){
+        if (eventToEdit){
             setFormData({
-                name: editingEvent.name,
-                data: editingEvent.date,
-                time: editingEvent.time,
-                description: editingEvent.description,
-                location: editingEvent.location
+                name: eventToEdit.name,
+                data: eventToEdit.date,
+                time: eventToEdit.time,
+                description: eventToEdit.description,
+                location: eventToEdit.location
             });
         } else {
             setFormData(emptyForm);
         }
-    }, [editingEvent]);
+    }, [eventToEdit]);
 
     function handleChange(e){
         const { name, value } = e.target;
@@ -39,9 +45,16 @@ function EventForm({ onSubmit, editingEvent, onCancelEdit }){
 
     function handleSubmit(e){
         e.preventDefault();
-        onSubmit(formData);
-        setFormData(emptyForm);
 
+        if (isEditing){
+          updateEvent(eventToEdit.id, formData)
+        } else {
+          addEvent(formData);
+
+        }
+
+        navigate("/dashboard")
+        
     }
 
 async function handleGenerateDescription() {
@@ -63,7 +76,7 @@ async function handleGenerateDescription() {
           Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`
         },
         body: JSON.stringify({
-          model: "YOUR_MODEL_SLUG",
+          model: "openai/gpt-4o",
           messages: [
             {
               role: "system",
@@ -115,7 +128,7 @@ async function handleGenerateDescription() {
     return (
             <div>
                 <form onSubmit={handleSubmit}>
-                    <h2>{editingEvent ? "Edit Event" : "Add New Event"}</h2>
+                    <h2>{isEditing ? "Edit Event" : "Add New Event"}</h2>
                     <label htmlFor="name">Event Name:</label>
                     <input
                         id="name"
@@ -170,11 +183,11 @@ async function handleGenerateDescription() {
                     />
 
                     <button type="submit">
-                        {editingEvent? "Save Changes" : "Add Event"}
+                        {isEditing ? "Save Changes" : "Add Event"}
                     </button>
 
-                    {editingEvent && (
-                        <button type="button" onClick={onCancelEdit}>
+                    {isEditing && (
+                        <button type="button" onClick={() => navigate("/dashboard")}>
                             Cancel
                         </button>
                     )}
