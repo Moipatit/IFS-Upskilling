@@ -1,22 +1,41 @@
 import { createContext, useContext, useState } from "react";
+import { useAuth } from "./AuthContext";
 
 const EventContext = createContext(null);
 
 export function EventProvider({ children }){
     const [events, setEvents] = useState([]);
+    const { currentUser } = useAuth();
 
     function addEvent(eventData){
-        const newEvent = { id: crypto.randomUUID(), ...eventData};
+        if (!currentUser) return; 
+
+        const newEvent = { ...eventData, id: crypto.randomUUID(), userId: currentUser.userId };
 
         setEvents(prev => [...prev, newEvent]);
     }
 
     function updateEvent(id, updatedData){
-        setEvents(prev => prev.map(event => event.id === id ? { ...event, updatedData } : event));
+        if (!currentUser) return;
+
+        setEvents(prev => 
+            prev.map(event => 
+                String(event.id) === String(id) && 
+                event.userId === currentUser.userId
+                  ? { ...event, ...updatedData, id: event.id, userId: event.userId } 
+                  : event
+                )
+            );
     }
 
     function deleteEvent(id){
-        setEvents(prev => prev.filter(event => event.id !== id));
+        if (!currentUser) return;
+
+        setEvents(prev => 
+            prev.filter(event => 
+                String(event.id) !== (id) ||
+            event.userId !== currentUser.userId
+        ));
     }
 
     return (

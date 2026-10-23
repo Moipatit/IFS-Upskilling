@@ -1,15 +1,17 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEvents } from "../context/EventContext";
 import EventForm from "./EventForm";
 
 function EditEvent(){
     const { id } = useParams();
     const { events } = useEvents();
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
 
-    const eventToEdit = events.find(event => event.id === id);
+
+    const eventToEdit = currentUser ? events.find(event => String(event.id) === id && event.userId === currentUser.userId) : null;
 
     if (!eventToEdit){
-        return <Navigate to="/dashboard" replace />;
+        return <p>Event not found</p>;
     }
 
     return <EventForm eventToEdit={eventToEdit} />;

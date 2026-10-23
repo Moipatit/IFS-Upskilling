@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate  } from 'react-router-dom';
 import { EventProvider } from "./context/EventContext"
+import { AuthProvider } from './context/AuthContext';
+
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -13,22 +15,24 @@ function App() {
 
   return (
   <BrowserRouter>
-  <EventProvider>
-    <NavBar/>
-    <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />}/>
-      <Route path="/register" element={<Register/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/help" element={<Help/>}/>
-      <Route path="/edit-event/:id" element={<EditEvent/>}/>
-      <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path="/add-event" element={<EventForm/>}/>
-      </Route>
-    </Routes>
+    <AuthProvider>
+      <EventProvider>
+        <NavBar/>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/help" element={<Help/>}/>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />}/>
+            <Route path="/add-event" element={<EventForm/>}/>
+            <Route path="/edit-event/:id" element={<EditEvent/>}/>
+          </Route>
+        </Routes>
 
-  </EventProvider>
-  
+      </EventProvider>
+    </AuthProvider>
+ 
   </BrowserRouter>
   )
 }

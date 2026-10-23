@@ -1,18 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEvents } from "../context/EventContext";
+import { useAuth } from "../context/AuthContext";
 
 function Dashboard(){
     const navigate = useNavigate();
     const { events, deleteEvent } = useEvents();
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const currentUser = useAuth();
 
 
-    const handleLogout = () => {
-        localStorage.removeItem("currentUser");
-        navigate("/login", { replace: true });
-    };
-
+    const myEvents = currentUser ? events.filter((event) => event.userId === currentUser.userId) : [];
    
 
     return (
@@ -25,10 +22,10 @@ function Dashboard(){
             <main>
                 <section>
                     <h2>Upcoming Events</h2>
-                    {events.length === 0 ? (
+                    {myEvents.length === 0 ? (
                         <p>No events have been added yet</p>
                     ): (
-                        events.map(event => (
+                        myEvents.map(event => (
                           <article key={event.id}>
                             <h2>{event.name}</h2>
                             <p>Date: {event.date}</p>

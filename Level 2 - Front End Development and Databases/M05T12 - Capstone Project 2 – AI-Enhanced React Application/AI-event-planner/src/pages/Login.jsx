@@ -1,24 +1,25 @@
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 
 
 function Login(){
     const { register, handleSubmit, formState: { errors }, } = useForm();
+    const { login } = useAuth();
     const navigate = useNavigate();
+    const [loginError, setLoginError] = useState("");
 
+    // Logging in using the authcontext
     const onSubmit = (data) => {
-        const email = data.email.trim().toLowerCase();
-        const storedUser = localStorage.getItem(email);
-        const userData = storedUser ? JSON.parse(storedUser) : null;
+        setLoginError("")
+        
+        const result = login(data.email, data.password);
 
-        if (userData && userData.password === data.password){
-            // Save only the user's public details in the session
-            localStorage.setItem("currentUser", JSON.stringify({ name: userData.name, email: userData.email }));
-
-            // Navigate to the dashboard
+        if (result.success){
             navigate("/dashboard", { replace: true });
         } else {
-            console.log("Email or Password is incorrect")
+            setLoginError(result.message);
         }
     };
 
@@ -55,7 +56,13 @@ function Login(){
                         {errors.password.message}
                     </span> 
                     )}
-                <input type="submit"/>
+
+                {loginError && (
+                    <p role="alert" style={{ color: "red"}}>
+                        {loginError}
+                    </p>
+                )}
+                <input type="submit" value="Log in"/>
 
             </form>
             <Link to="/register">New user, Register here</Link>

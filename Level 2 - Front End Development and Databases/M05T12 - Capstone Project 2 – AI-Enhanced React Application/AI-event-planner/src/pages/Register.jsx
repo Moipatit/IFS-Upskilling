@@ -9,12 +9,14 @@ function Register(){
         const email = data.email.trim().toLowerCase();
         const existingUser = localStorage.getItem(email);
         if (existingUser){
-            console.log("Email is already registered");
+            return <p>User already exists</p>
         } else {
             const userData = {
                 name: data.name.trim(),
                 email: data.email,
-                password: data.password
+                password: data.password,
+                username: data.username,
+                userId: crypto.randomUUID()
             };
             localStorage.setItem(email, JSON.stringify(userData));
             navigate("/login", { replace: true });
@@ -55,6 +57,21 @@ function Register(){
                     <span style={{ color: "red" }}>
                         {errors.email.message}
                     </span>
+                )}
+
+                <input
+                 type="text"
+                 {...register("username", { 
+                     required: "Username is required",
+                     validate: value => 
+                        value.trim() !== "" || "Username cannot be empty"
+                })}
+                 placeholder="Username"
+                />
+                {errors.username && (
+                    <span style={{ color: "red" }}>
+                        {errors.username.message}
+                    </span> 
                 )}
 
                 <input
