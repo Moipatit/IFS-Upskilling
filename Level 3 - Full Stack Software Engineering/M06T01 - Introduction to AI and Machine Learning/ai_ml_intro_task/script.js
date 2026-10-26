@@ -1,9 +1,11 @@
+// Declaring variables from the DOM elements
 const recommendationForm = document.getElementById("recommendation-form");
 const resultDisplay = document.getElementById("result-display");
 
 let recommendation = "";
 let explanation = ""
 
+// A function that takes the user input from the form and determines a learning path
 recommendationForm.addEventListener("submit", function(e){
     e.preventDefault();
 
@@ -22,6 +24,7 @@ recommendationForm.addEventListener("submit", function(e){
         explanation = "Recommended because your score and feedback suggest a balanced approach with targeted practice will help solidify your skills.";
     }
 
+    // Displaying the learning path and explanation
     resultDisplay.innerHTML = `
     <h3>Recommended Path: ${recommendation}</h3>
     <p><strong>Reason:</strong> ${explanation}</p>

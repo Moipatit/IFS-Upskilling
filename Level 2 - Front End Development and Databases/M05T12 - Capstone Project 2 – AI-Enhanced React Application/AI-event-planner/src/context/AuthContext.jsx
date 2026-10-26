@@ -33,12 +33,17 @@ export function AuthProvider({ children }){
             };
         }
 
+        console.log("Registered user ID:", userData.userId);
+        console.log("Normalized email:", normalizedEmail);
+
         // Store the public user details in the session
         const publicUser = {
             userId: userData.userId,
             name: userData.name,
             email: normalizedEmail
         };
+
+        console.log("Public user:", publicUser);
 
         localStorage.setItem("currentUser", JSON.stringify(publicUser));
 

@@ -1,10 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
 
 const EventContext = createContext(null);
 
 export function EventProvider({ children }){
-    const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState(() => {
+        try {
+            const savedEvents = localStorage.getItem("aiEventPlannerEvents");
+            return savedEvents ? JSON.parse(savedEvents) : [];
+        } catch (error){
+            console.error("Could not load saved events:", error);
+            return [];
+        }
+    });
+
+    useEffect(() => {
+        try {
+            localStorage.setItem("aiEventPlannerEvents", JSON.stringify(events));
+        } catch (error){
+            console.error("Could not save events:", error)
+        }
+    }, [events]);
+    
     const { currentUser } = useAuth();
 
     function addEvent(eventData){

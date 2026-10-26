@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { useEvents } from "../context/EventContext";
 import { useAuth } from "../context/AuthContext";
 
 function Dashboard(){
     const navigate = useNavigate();
     const { events, deleteEvent } = useEvents();
-    const currentUser = useAuth();
+    const { currentUser } = useAuth();
 
 
     const myEvents = currentUser ? events.filter((event) => event.userId === currentUser.userId) : [];
@@ -16,9 +15,6 @@ function Dashboard(){
         <div>
             <h1>Dashboard</h1>
             <h2>Welcome, {currentUser?.name}</h2>
-            <button onClick={handleLogout}>Log Out</button>
-
-            
             <main>
                 <section>
                     <h2>Upcoming Events</h2>

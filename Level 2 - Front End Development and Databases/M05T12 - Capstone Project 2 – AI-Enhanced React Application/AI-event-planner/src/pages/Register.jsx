@@ -12,11 +12,11 @@ function Register(){
             return <p>User already exists</p>
         } else {
             const userData = {
+                userId: crypto.randomUUID(),
                 name: data.name.trim(),
                 email: data.email,
                 password: data.password,
                 username: data.username,
-                userId: crypto.randomUUID()
             };
             localStorage.setItem(email, JSON.stringify(userData));
             navigate("/login", { replace: true });
