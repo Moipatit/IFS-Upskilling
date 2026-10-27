@@ -24,6 +24,25 @@ const textSequence = [
 // Target token evaluating context parameters: We are analyzing the word "State"
 const focusTokenIndex = 2; 
 
+// function to compute the dot product 
+function calculateDotProduct(vectorA, vectorB){
+  let product = 0;
+  for (let i = 0; i < vectorA.length; i++){
+    product += vectorA[i] * vectorB[i];
+  }
+
+  return product;
+}
+
+
+const rawScores = textSequence.map(token => {
+  const score = calculateDotProduct(textSequence[focusTokenIndex].query, token.key);
+  const scaledScore = score/2
+  return { text: token.word, rawScore: score, Scaled: scaledScore }
+})
+
+console.log("Raw Dot Product Attention Scores:");
+console.log(rawScores)
 
 /* Expected Verification Output:
 - Word: "React" | Raw: 0.7875 | Scaled: 0.3938
