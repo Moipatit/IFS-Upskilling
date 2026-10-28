@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planning</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>Travel Planning Website</h1>
+        <section>
+            <h2>Application Overview</h2>
+            <article>
+                <P>The application that I selected is a Travel planning platform. 
+                    This platform is aimed at people who you are planning to travel in the near future.
+                    Traveling can be very stressful because it requires a lot of planning. 
+                    The purpose of this application is have a single platform to handle all of the 
+                    planning and to help reduce the stress that occurs with organizing a trip. 
+                </P>
+            </article>
+        </section>
+
+        <section>
+            <h2>Traditional Feature</h2>
+            <p>One traditional feature of a travel planning website would be a standard travel itinerary.
+                Travel planning websites usually rely on specialized travel software to create their itineraries.
+                Planners pull pre-configured information such hotels, guided tours and seasonal pricing from
+                a centralized database.  </p>
+        </section>
+
+        <section>
+            <h2>Generative AI feature</h2>
+            <p>I would redesign the feature by personalizing the itinerary for the user.
+                The user would input the following information: </p>
+                <ul>
+                    <li>Destination</li>
+                    <li>Travel goal (e.g relaxation, food, exploration, adventure)</li>
+                    <li>The length of the trip (e.g 7 days, 2 weeks, 1 Month)</li>
+                    <li>Number of people</li>
+                    <li>Budget</li>
+                    <li>Preferred pace (relaxed vs fast-paced)</li>
+                </ul>
+
+            <p>The application would create a customized day-to-day built around all of the information that the user shared.
+                This generated output creates a more personalized experience because it is tailored to the user's needs.
+                This approach gives more value because instead of the user being given generic information they have a 
+                itinerary that is custom made for them. 
+            </p>
+        </section>
+
+        <section>
+            <h2>User experience walkthrough</h2>
+            <form id="aiForm">
+                <div>
+                    <label for="destination">Destination:</label>
+                    <input type="text" id="destination" name="destination" required>
+                </div>
+
+
+                <div>
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" name="startDate" required>
+                </div>
+
+                <div>
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" name="endDate" required>
+                </div>
+
+                <div>
+                    <label for="numberOfPeople">Number of People:</label>
+                    <input type="number" id="numberOfPeople" name="numberOfPeople" required>
+                </div>
+
+                <div>
+                    <label for="budget">Budget:</label>
+                    <input type="text" id="budget" name="budget" required>
+                </div>
+
+                <div>
+                    <label for="interests">Interest:</label>
+                    <input type="text" id="interests" name="interests" required>
+                </div>
+
+                <button type="submit">Generate Plan</button>
+            </form>
+
+            <div id="output"></div>
+        </section>
+    </main>
+
+<script src="./script.js"></script>
+</body>
+</html>
