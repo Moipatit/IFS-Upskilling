@@ -1,0 +1,72 @@
+/* General styling */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* Main heading */
+h1 {
+    text-align: center;
+    color: #245b85;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #245b85;
+    border-bottom: 2px solid #dce8f2;
+    padding-bottom: 8px;
+    margin-top: 0;
+}
+
+/* Sections */
+section {
+    background-color: #ffffff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+article {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+ul {
+    padding-left: 25px;
+}
+
+/* Form */
+#aiForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#aiForm div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
