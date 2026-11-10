@@ -44,28 +44,31 @@ const queryB = [0.02, 0.89, 0.15, 0.04];
 const queryC = [0.22, 0.07, 0.81, 0.31];
 
 
-const rawScore1 = vectorStore.map(token => {
-    const score = cosineSimilarity(queryA, token.vector);
-    return { text: token.title, rawScore: score};
-});
+// function to loop through the store and finds the best match
+function evaluateQuery(queryName, queryVector){
+    console.log(`\n--- ${queryName}---`);
 
-const rawScore2 = vectorStore.map(token => {
-    const score = cosineSimilarity(queryB, token.vector);
-    return { text: token.title, rawScore: score};
-});
+    let bestMatch = null;
+    let highestScore = -1;
 
-const rawScore3 = vectorStore.map(token => {
-    const score = cosineSimilarity(queryC, token.vector);
-    return { text: token.title, rawScore: score};
-}); 
+    const results = vectorStore.map(item => {
+        const score = cosineSimilarity(queryVector, item.vector);
 
-console.log("Query Evaluation 1:")
-console.table(rawScore1);
+        // Look for the highest matching result
+        if (score > highestScore){
+            highestScore = score;
+            bestMatch = item.title;
+        }
 
-console.log("Query Evaluation 2:")
-console.table(rawScore2);
+        return { title: item.title, similarityScore: score };
+    });
 
-console.log("Query Evaluation 3:")
-console.table(rawScore3)
+    console.table(results);
+    console.log(`Closest Semantic Match: "${bestMatch}" (Score: ${highestScore.toFixed(4)})`);
+}
 
+// Running the evaluations for the profiles
+evaluateQuery("Query Profile A (Tech Bias Search)", queryA);
+evaluateQuery("Query Profile B (Art Bias Search)", queryB);
+evaluateQuery("Query Profile C (Finance Bias Search)", queryC);
 
