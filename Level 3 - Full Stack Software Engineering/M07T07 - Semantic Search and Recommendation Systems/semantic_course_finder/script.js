@@ -30,8 +30,15 @@ button.addEventListener('click', () => {
 });
 
 function searchQuery(query){
+    if (query.trim().length === 0){
+        alert("Please enter a search phrase.");
+        return;
+    }
+
+    const searchPhrase = query.trim();
+
     // Check if the user used a supported phrase
-    if (!Object.hasOwn(queryEmbeddings, query)){
+    if (!Object.hasOwn(queryEmbeddings, searchPhrase)){
         alert("This phrase is not supported. Please try again using a supported phrase");
         return;
     }
@@ -42,7 +49,7 @@ function searchQuery(query){
     // Calculate the similarity scores for all of the courses
     const results = courses.map(item => {
         const score = calculateCosineSimilarity(queryVector, item.embedding);
-        return { id: item.id, title: item.title, description: item.description, similarityScore: score}
+        return { id: item.id, title: item.title, description: item.description, embedding: item.embedding, similarityScore: score}
     });
 
     // Sort the courses by similarity score 
@@ -64,12 +71,14 @@ function displayResults(results){
 
     // Create a heading 
     const heading = document.createElement("h2");
-    heading.textContent = "Top 3 Search Results";
+    heading.textContent = "Search Results";
+    resultsContainer.appendChild(heading);
 
     // Display each course
     results.forEach(course => {
-        const courseElement = document.createElement("div");
-        
+        const courseCard = document.createElement("button");
+        courseCard.classList.add("course-card");
+
         const title = document.createElement("h3");
         title.textContent = course.title;
 
@@ -77,15 +86,107 @@ function displayResults(results){
         description.textContent = course.description;
 
         const score = document.createElement("p");
-        score.textContent = `Similarity Score: ${course.similarityScore.toFixed(3)}`;
+        score.textContent = `Similarity ${(course.similarityScore).toFixed(4)}`;
 
-        courseElement.appendChild(title);
-        courseElement.appendChild(description);
-        courseElement.appendChild(score);
+        courseCard.appendChild(title);
+        courseCard.appendChild(description);
+        courseCard.appendChild(score);
 
-        resultsContainer.appendChild(courseElement)
-
+        // Handle clicking on a course
+        courseCard.addEventListener("click", () => {
+            selectCourse(course);
+        });
+        
+        resultsContainer.appendChild(courseCard);
     })
+}
+
+// function to allow the user to select a course
+function selectCourse(course){
+    const recommendationsContainer = document.getElementById("recommendations");
+
+    // remove previous recommendations
+    recommendationsContainer.replaceChildren();
+
+    // Creating elements
+
+    const heading = document.createElement("h2");
+    heading.textContent = "Selected Course";
+
+    const title = document.createElement("h3");
+    title.textContent = course.title;
+
+    const description = document.createElement("p");
+    description.textContent = course.description;
+
+    const message = document.createElement("p");
+    message.textContent = "Select a course to explore its related recommendations.";
+
+    // Add the elements to the container 
+    recommendationsContainer.appendChild(heading);
+    recommendationsContainer.appendChild(title);
+    recommendationsContainer.appendChild(description);
+    recommendationsContainer.appendChild(message);
+
+    // Fetch the recommended courses
+    const recommendations = getRecommendations(course);
+
+    // Display the recommended courses
+    displayRecommendations(recommendations);
+}
+
+// Function to get recommendations based on what the user selected
+function getRecommendations(selectedCourse){
+    // Exclude the selected course
+    const otherCourses = courses.filter(course => course.id !== selectedCourse.id);
+
+    // Calculate the similarity
+    const results = otherCourses.map(course => {
+        const score = calculateCosineSimilarity(selectedCourse.embedding, course.embedding);
+
+        return {id: course.id, title: course.title, description: course.description, embedding: course.embedding, similarityScore: score};
+    });
+
+    //Sort by the highest similarity score
+    results.sort((a, b) => b.similarityScore - a.similarityScore);
+
+    // Return the two most similar courses
+    return results.slice(0, 2);
+}
+
+// Function to display the recommendations
+function displayRecommendations(recommendations){
+    const container = document.getElementById("recommendations");
+
+    // remove previous recommendations
+    container.replaceChildren();
+
+    const heading = document.createElement("h2");
+    heading.textContent = "Related Course Recommendations";
+    container.appendChild(heading);
+
+    recommendations.forEach(course => {
+        const courseCard = document.createElement("div");
+
+        const title = document.createElement("h3");
+        title.textContent = course.title;
+
+        const description = document.createElement("p");
+        description.textContent = course.description;
+
+        const score = document.createElement("p");
+        score.textContent = `Similarity: ${(course.similarityScore).toFixed(4)}`;
+
+        courseCard.appendChild(title);
+        courseCard.appendChild(description);
+        courseCard.appendChild(score);
+
+        container.appendChild(courseCard);
+    })
+
+
+
+
 }
 
 

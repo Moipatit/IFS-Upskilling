@@ -1,0 +1,168 @@
+
+/* General page styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6fb;
+    color: #263247;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+/* Page heading */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 2.2rem;
+    color: #243b70;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #68758a;
+}
+
+/* Search section */
+.search-section {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.search-section label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.search-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.search-controls input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #d5dce8;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-controls input:focus {
+    outline: none;
+    border-color: #3157c8;
+    box-shadow: 0 0 0 3px rgba(49, 87, 200, 0.12);
+}
+
+.search-controls button {
+    background-color: #3157c8;
+    color: #ffffff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-controls button:hover {
+    background-color: #24439e;
+}
+
+/* Results and recommendations */
+.results-section,
+.recommendations-section {
+    margin-bottom: 35px;
+}
+
+#search-results h2,
+#recommendations h2 {
+    color: #243b70;
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+}
+
+/* Course cards */
+.course-card,
+#recommendations > div > div {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #e2e7f0;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Clickable search results */
+.course-card {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-3px);
+    border-color: #3157c8;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.course-card:focus-visible {
+    outline: 3px solid #3157c8;
+    outline-offset: 3px;
+}
+
+/* Course titles and descriptions */
+.course-card h3,
+#recommendations h3 {
+    color: #3157c8;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.course-card p,
+#recommendations p {
+    color: #68758a;
+    margin-bottom: 8px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    .container {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .page-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .search-controls {
+        flex-direction: column;
+    }
+
+    .search-controls button {
+        width: 100%;
+    }
+}
