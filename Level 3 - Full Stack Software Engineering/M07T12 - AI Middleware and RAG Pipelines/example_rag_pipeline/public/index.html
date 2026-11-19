@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example RAG Pipeline</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page-container">
+    <section class="hero">
+      <h1>Example RAG Pipeline</h1>
+      <p>
+        This example shows how a simplified Retrieval-Augmented Generation pipeline works.
+        Enter a question about the course knowledge base and observe each stage of the process.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Ask the Course Assistant</h2>
+
+      <label for="questionInput">Your question</label>
+      <textarea
+        id="questionInput"
+        placeholder="Example: Which course teaches React?"
+      ></textarea>
+
+      <button id="askButton">Ask Assistant</button>
+
+      <p id="errorMessage" class="error-message"></p>
+    </section>
+
+    <section id="results" class="results hidden">
+      <div class="card">
+        <h2>1. User Question</h2>
+        <p id="displayQuestion"></p>
+      </div>
+
+      <div class="card">
+        <h2>2. Retrieved Chunks</h2>
+        <p class="section-note">
+          These are the knowledge base chunks selected by the retriever.
+        </p>
+        <div id="retrievedChunks"></div>
+      </div>
+
+      <div class="card">
+        <h2>3. Augmented Prompt</h2>
+        <p class="section-note">
+          This is the prompt that would normally be sent to a language model.
+        </p>
+        <pre id="augmentedPrompt"></pre>
+      </div>
+
+      <div class="card">
+        <h2>4. Simulated AI Response</h2>
+        <p id="responseText"></p>
+      </div>
+    </section>
+
+    <section class="card explanation">
+      <h2>How the Retrieval Pipeline Works</h2>
+      <p>
+        This example begins by loading a local JSON knowledge base. The knowledge base contains
+        short course records with details such as title, category, difficulty, duration, summary,
+        and skills covered.
+      </p>
+      <p>
+        The pipeline then divides each course into smaller chunks. Chunking is useful because a
+        retrieval system should search focused pieces of information rather than large documents
+        that may contain unrelated details.
+      </p>
+      <p>
+        When the user asks a question, the retriever compares the question with each chunk using
+        a simple keyword scoring strategy. The highest-scoring chunks are selected as the most
+        relevant context.
+      </p>
+      <p>
+        The prompt builder combines the retrieved chunks with the user's question. This creates
+        an augmented prompt, which gives a language model supporting information before it
+        generates a response.
+      </p>
+      <p>
+        This project uses a mock language model instead of a live AI API. This allows you to
+        understand the structure of a RAG pipeline without needing an API key or paid service.
+        In a production application, the mock response function would be replaced with a call
+        to a real language model.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

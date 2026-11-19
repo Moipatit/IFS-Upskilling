@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Introduction to Web Development",
+    "category": "Web Development",
+    "difficulty": "Beginner",
+    "duration": "4 weeks",
+    "summary": "This course introduces learners to HTML, CSS, and basic JavaScript. Learners build simple web pages and understand how websites are structured.",
+    "skills": ["HTML", "CSS", "JavaScript basics", "page structure"]
+  },
+  {
+    "id": 2,
+    "title": "JavaScript Fundamentals",
+    "category": "Programming",
+    "difficulty": "Beginner",
+    "duration": "5 weeks",
+    "summary": "This course teaches variables, functions, arrays, loops, objects, and basic problem-solving with JavaScript.",
+    "skills": ["variables", "functions", "arrays", "loops", "objects"]
+  },
+  {
+    "id": 3,
+    "title": "React Application Development",
+    "category": "Front-End Development",
+    "difficulty": "Intermediate",
+    "duration": "6 weeks",
+    "summary": "This course teaches learners how to build interactive interfaces using React components, props, state, events, and reusable UI patterns.",
+    "skills": ["React", "components", "props", "state", "events"]
+  },
+  {
+    "id": 4,
+    "title": "Node.js and Express APIs",
+    "category": "Back-End Development",
+    "difficulty": "Intermediate",
+    "duration": "6 weeks",
+    "summary": "This course focuses on building server-side applications using Node.js and Express. Learners create routes, handle requests, and return JSON responses.",
+    "skills": ["Node.js", "Express", "routing", "API development", "JSON"]
+  },
+  {
+    "id": 5,
+    "title": "Databases for Web Applications",
+    "category": "Data Management",
+    "difficulty": "Intermediate",
+    "duration": "5 weeks",
+    "summary": "This course introduces relational and document databases. Learners store, retrieve, update, and delete application data.",
+    "skills": ["databases", "CRUD", "SQL basics", "data modelling"]
+  },
+  {
+    "id": 6,
+    "title": "AI in Web Development",
+    "category": "Artificial Intelligence",
+    "difficulty": "Intermediate",
+    "duration": "4 weeks",
+    "summary": "This course explores how web developers can use AI APIs, prompt engineering, and AI-powered interfaces to build smarter applications.",
+    "skills": ["AI APIs", "prompt engineering", "AI interfaces", "fetch requests"]
+  }
+]

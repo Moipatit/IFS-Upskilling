@@ -1,0 +1,13 @@
+{
+  "name": "example-rag-pipeline",
+  "version": "1.0.0",
+  "description": "A beginner-friendly example of a simplified local RAG pipeline.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
