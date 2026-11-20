@@ -1,0 +1,67 @@
+
+[
+  {
+    "id": 1,
+    "title": "Introduction to JavaScript",
+    "description": "Learn the fundamentals of JavaScript programming, including variables, functions, loops, arrays, and objects.",
+    "difficulty": "Beginner",
+    "duration": "6 weeks",
+    "skills": ["JavaScript", "Variables", "Functions", "Arrays", "Objects", "Loops"]
+  },
+  {
+    "id": 2,
+    "title": "Frontend Development with React",
+    "description": "Build interactive user interfaces using React components, props, state, hooks, and modern frontend development practices.",
+    "difficulty": "Intermediate",
+    "duration": "8 weeks",
+    "skills": ["React", "JSX", "Components", "Props", "State", "Hooks", "Frontend Development"]
+  },
+  {
+    "id": 3,
+    "title": "Backend Development with Node.js",
+    "description": "Develop backend applications and REST APIs using Node.js, Express, routing, middleware, and asynchronous JavaScript.",
+    "difficulty": "Intermediate",
+    "duration": "8 weeks",
+    "skills": ["Node.js", "Express", "REST APIs", "Middleware", "Routing", "Async JavaScript"]
+  },
+  {
+    "id": 4,
+    "title": "Python for Data Analysis",
+    "description": "Learn how to analyse datasets, manipulate data, and extract insights using Python and popular data analysis libraries.",
+    "difficulty": "Beginner",
+    "duration": "7 weeks",
+    "skills": ["Python", "Pandas", "Data Analysis", "Data Cleaning", "Data Visualization"]
+  },
+  {
+    "id": 5,
+    "title": "SQL and Database Management",
+    "description": "Learn how to design relational databases, write SQL queries, retrieve data, and manage database relationships.",
+    "difficulty": "Beginner",
+    "duration": "5 weeks",
+    "skills": ["SQL", "Database Design", "SELECT", "JOIN", "Filtering", "Relational Databases"]
+  },
+  {
+    "id": 6,
+    "title": "Cloud Computing with AWS",
+    "description": "Explore cloud computing fundamentals and deploy applications using AWS services, including EC2, S3, IAM, and Lambda.",
+    "difficulty": "Intermediate",
+    "duration": "9 weeks",
+    "skills": ["AWS", "EC2", "S3", "IAM", "Lambda", "Cloud Computing", "Deployment"]
+  },
+  {
+    "id": 7,
+    "title": "Cybersecurity Fundamentals",
+    "description": "Understand common security threats, network security, authentication, encryption, and defensive security practices.",
+    "difficulty": "Beginner",
+    "duration": "6 weeks",
+    "skills": ["Cybersecurity", "Network Security", "Encryption", "Authentication", "Threat Detection"]
+  },
+  {
+    "id": 8,
+    "title": "DevOps and CI/CD",
+    "description": "Learn how to automate software delivery using Git, Docker, CI/CD pipelines, deployment workflows, and infrastructure automation fundamentals.",
+    "difficulty": "Advanced",
+    "duration": "10 weeks",
+    "skills": ["DevOps", "Git", "Docker", "CI/CD", "Automation", "Deployment", "Infrastructure"]
+  }
+]
