@@ -17,7 +17,7 @@ function retrieveChunks(chunks, question){
         let score = 0;
 
         // Comparing the chunks with the user input and increasing the score if there is a match
-        cleanedWords.forEach((word) => {
+        filteredWords.forEach((word) => {
             if (lowerChunkContent.includes(word)){
                 score++;
             }
@@ -30,7 +30,8 @@ function retrieveChunks(chunks, question){
 
     // Sort and rank the chunks
     const sortedScoreChunks = scoredChunks.sort((a, b) => b.score - a.score);
-    const topChunks = sortedScoreChunks.slice(0, 3);
+    const filteredScoreChunks = sortedScoreChunks.filter(chunk => chunk.score > 0)
+    const topChunks = filteredScoreChunks.slice(0, 3);
 
 
     // Return the top 3 chunks
