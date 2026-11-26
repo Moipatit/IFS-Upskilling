@@ -7,7 +7,7 @@ const mockLLM = require("./middleware/mockLLM");
 
 const courses = loadCourses();
 const chunks = chunkCourses(courses);
-const question = "What AWS skills can I learn?";
+const question = "What will I learn in Node.js?";
 const retrievedChunks = retrieveChunks(chunks, question);
 const augmentedPrompt = buildPrompt(question, retrievedChunks);
 

@@ -6,7 +6,7 @@ function retrieveChunks(chunks, question){
     //Preprocess the question
     let lowercaseQuestion = question.toLowerCase();
     let words = lowercaseQuestion.split(/\s+/);
-    const cleanedWords = words.map(word => word.replace(/[^\w]/g, ""));
+    const cleanedWords = words.map(word => word.replace(/[^\w.]/g, ""));
     let filteredWords = cleanedWords.filter(word => !stopWords.includes(word));
 
     // Calculating the chunk scores
