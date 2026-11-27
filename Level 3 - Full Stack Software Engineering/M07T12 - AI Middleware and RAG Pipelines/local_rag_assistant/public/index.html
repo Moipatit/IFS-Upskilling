@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Course Assistant</h1>
+            <p>Your AI-powered course recommendation assistant</p>
+        </header>
+
+        <main>
+             <section class="question-section">
+                <h2>Ask a question</h2>
+                <form id="question-form">
+                    <textarea id="question-input" placeholder="e.g Which AWS skills can I learn?" rows="3" required></textarea>
+                    <button type="submit" id="submit-button">Ask Assistant</button>
+                </form>
+             </section>
+
+             <section class="response-section">
+                <h2>Assistant Response</h2>
+
+                <div id="response-container">
+                    <p id="response-text"> Your recommendation will appear here.</p>
+                </div>
+             </section>
+
+             <section class="context-section">
+                <h2>Retrieved Information</h2>
+                <div id="retrieved-context">The retrieved course information will appear here.</div>
+             </section>
+
+            <section class="prompt-section">
+                <h2>Augmented Prompt</h2>
+                <details>
+                    <summary>View the prompt sent to the mock LLM</summary>
+                    <pre id="augmented-prompt">
+                        The augmented prompt will appear here.
+                    </pre>
+                </details>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

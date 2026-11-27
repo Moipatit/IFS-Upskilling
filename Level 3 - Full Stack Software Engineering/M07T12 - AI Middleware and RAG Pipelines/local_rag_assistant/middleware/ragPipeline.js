@@ -15,4 +15,11 @@ function runRAG(question){
     // Build the augmented prompt
     const augmentedPrompt = buildPrompt(question, retrievedChunks);
 
+    //Generate the response
+    const response = mockLLM(augmentedPrompt);
+
+    return { retrievedChunks, augmentedPrompt, response };
+
 }
+
+module.exports = runRAG;
